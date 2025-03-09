@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS Auto Calculation</title>
+</head>
+<body>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <input type="number" id="num3" placeholder="Enter third number">
+    <input type="text" id="result" placeholder="Result" readonly>
+
+    <input type="number" id="num4" placeholder="Enter first number">
+    <input type="number" id="num5" placeholder="Enter second number">
+    <input type="number" id="num6" placeholder="Enter third number">
+    <input type="text" id="result1" placeholder="Result" readonly>
+
+    <button id="submitBtn">Submit Data</button>
+    <p id="statusMessage"></p>
+
+    <script>
+        async function fetchDataAndStore() {
+            try {
+                const response = await fetch('https://dummyjson.com/c/20a7-2edb-4b49-b71f'); // Replace with actual API
+                const data = await response.json();
+
+                const inputData = {
+                    num1: data.num1 || 0,
+                    num2: data.num2 || 0,
+                    num3: data.num3 || 0,
+                    num4: data.num4 || 0,
+                    num5: data.num5 || 0,
+                    num6: data.num6 || 0,
+                };
+
+                localStorage.setItem('inputData', JSON.stringify(inputData));
+                loadInputsFromLocalStorage();
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value) || 0;
+            let num2 = parseFloat(document.getElementById("num2").value) || 0;
+            let num3 = parseFloat(document.getElementById("num3").value) || 0;
+            let num4 = parseFloat(document.getElementById("num4").value) || 0;
+            let num5 = parseFloat(document.getElementById("num5").value) || 0;
+            let num6 = parseFloat(document.getElementById("num6").value) || 0;
+
+            let result = (num1 + num2) - num3;
+            let result1 = (num4 + num6) - num5;
+
+            document.getElementById("result").value = result;
+            document.getElementById("result1").value = result1;
+
+            saveInputsToLocalStorage(num1, num2, num3, num4, num5, num6);
+        }
+
+        function saveInputsToLocalStorage(num1, num2, num3, num4, num5, num6) {
+            const inputData = { num1, num2, num3, num4, num5, num6 };
+            localStorage.setItem('inputData', JSON.stringify(inputData));
+        }
+
+        function loadInputsFromLocalStorage() {
+            const savedData = localStorage.getItem('inputData');
+            if (savedData) {
+                const inputData = JSON.parse(savedData);
+                document.getElementById("num1").value = inputData.num1 || "";
+                document.getElementById("num2").value = inputData.num2 || "";
+                document.getElementById("num3").value = inputData.num3 || "";
+                document.getElementById("num4").value = inputData.num4 || "";
+                document.getElementById("num5").value = inputData.num5 || "";
+                document.getElementById("num6").value = inputData.num6 || "";
+
+                calculate();
+            }
+        }
+
+        async function postDataToAPI() {
+            const savedData = localStorage.getItem('inputData');
+            if (!savedData) {
+                document.getElementById("statusMessage").innerText = "No data to submit!";
+                return;
+            }
+
+            const inputData = JSON.parse(savedData);
+
+            try {
+                const response = await fetch('https://dummyjson.com/c/4274-3920-45d3-b105', { // Replace with actual API
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(inputData)
+                });
+
+                if (response.ok) {
+                    document.getElementById("statusMessage").innerText = "Data submitted successfully!";
+                } else {
+                    document.getElementById("statusMessage").innerText = "Failed to submit data.";
+                }
+            } catch (error) {
+                console.error("Error submitting data:", error);
+                document.getElementById("statusMessage").innerText = "Error submitting data!";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            if (!localStorage.getItem("inputData")) {
+                await fetchDataAndStore();
+            } else {
+                loadInputsFromLocalStorage();
+            }
+
+            document.querySelectorAll("input[type='number']").forEach(input => {
+                input.addEventListener("input", calculate);
+            });
+
+            document.getElementById("submitBtn").addEventListener("click", postDataToAPI);
+        });
+    </script>
+</body>
+</html>
