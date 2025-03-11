@@ -79,11 +79,6 @@ input:disabled {
   background-color: #1e40af;
 }
 
-.button:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.5);
-}
-
 .button-danger {
   color: white;
   background-color: #c53030;
@@ -100,11 +95,6 @@ input:disabled {
 
 .button-danger:hover {
   background-color: #b91c1c;
-}
-
-.button-danger:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.5);
 }
 
 .container {
