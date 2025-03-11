@@ -25,6 +25,10 @@ input {
   outline: none;
 }
 
+input:disabled {
+  background-color: white;
+}
+
 .mx {
   margin-left: 5px;
   margin-right: 5px;
@@ -57,10 +61,71 @@ input {
   text-align: center;
 }
 
+.button {
+  color: white;
+  background-color: #1d4ed8;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #1e40af;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.5);
+}
+
+.button-danger {
+  color: white;
+  background-color: #c53030;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.button-danger:hover {
+  background-color: #b91c1c;
+}
+
+.button-danger:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.5);
+}
+
 .container {
   width: 100%;
   padding: 10px;
   margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.time-actions-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
 }
 
 .eload-accounts-container {
@@ -109,4 +174,18 @@ input[type="number"]::-webkit-outer-spin-button {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+/* Dark Mode Table Styling */
+.dark-mode table,
+.dark-mode tr,
+.dark-mode th,
+.dark-mode td {
+  border: 1px solid white;
 }
