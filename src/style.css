@@ -19,9 +19,10 @@ input {
   color: black;
   text-align: center;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 15px;
   border: none;
   height: 100%;
+  outline: none;
 }
 
 .mx {
@@ -67,6 +68,7 @@ input {
   gap: 130px;
   align-items: start;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .mid-layout {
@@ -75,11 +77,13 @@ input {
   align-items: start;
   justify-content: center;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .statements-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .statements-row-1 {
@@ -87,6 +91,7 @@ input {
   gap: 10px;
   align-items: start;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .easyload-container,
@@ -95,18 +100,21 @@ input {
   gap: 10px;
   align-items: start;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .analytics-container {
   display: flex;
-  gap: 75px;
+  gap: 82px;
   align-items: start;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .borrow-recovery-container {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
