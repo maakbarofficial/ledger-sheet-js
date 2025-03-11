@@ -63,32 +63,9 @@ input {
   margin: 0 auto;
 }
 
-.layout {
+.eload-accounts-container {
   display: flex;
   gap: 130px;
-  align-items: start;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.mid-layout {
-  display: flex;
-  gap: 10px;
-  align-items: start;
-  justify-content: center;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.statements-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.statements-row-1 {
-  display: flex;
-  gap: 10px;
   align-items: start;
   justify-content: center;
   flex-wrap: wrap;
@@ -103,17 +80,26 @@ input {
   flex-wrap: wrap;
 }
 
+.borrow-recovery-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.statements-container {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
 .analytics-container {
   display: flex;
   gap: 82px;
   align-items: start;
   justify-content: center;
-  flex-wrap: wrap;
-}
-
-.borrow-recovery-container {
-  display: flex;
-  gap: 10px;
   flex-wrap: wrap;
 }
 
