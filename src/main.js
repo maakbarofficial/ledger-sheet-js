@@ -51,3 +51,56 @@ function getDateTime() {
 // Update the time and date immediately and then every second
 getDateTime();
 setInterval(getDateTime, 1000);
+
+function sum(num1, num2){
+  return num1 + num2;
+}
+
+function subtract(num1, num2){
+  return num1 - num2;
+}
+
+function multiply(num1, num2){
+  return num1 * num2;
+}
+
+function getInputValue(id){
+  return parseFloat(document.getElementById(id).value) || 0;
+}
+
+// Sheet Calculation
+function sheetCalculation() {
+  let telenorNewBalance = getInputValue("telenor-new-balance");
+  let jazzNewBalance = getInputValue("jazz-new-balance");
+  let ufoneNewBalance = getInputValue("ufone-new-balance");
+  let zongNewBalance = getInputValue("zong-new-balance");
+  
+  let telenorReversalBalance = getInputValue("telenor-reversal-balance");
+  let jazzReversalBalance = getInputValue("jazz-reversal-balance");
+  let ufoneReversalBalance = getInputValue("ufone-reversal-balance");
+  let zongReversalBalance = getInputValue("zong-reversal-balance");
+
+  // let telenorTotalRs = getInputValue("telenor-total-rs");
+  // let jazzTotalRs = getInputValue("jazz-total-rs");
+  // let ufoneTotalRs = getInputValue("ufone-total-rs");
+  // let zongTotalRs = getInputValue("zong-total-rs");
+
+  // let telenorClosingBalance = getInputValue("telenor-closing-balance");
+  // let jazzClosingBalance = getInputValue("jazz-closing-balance");
+  // let ufoneClosingBalance = getInputValue("ufone-closing-balance");
+  // let zongClosingBalance = getInputValue("zong-closing-balance");
+
+  // let telenorTotalEloadSell = getInputValue("telenor-total-eload-sell");
+  // let jazzTotalEloadSell = getInputValue("jazz-total-eload-sell");
+  // let ufoneTotalEloadSell = getInputValue("ufone-total-eload-sell");
+  // let zongTotalEloadSell = getInputValue("zong-total-eload-sell");
+
+  let telenorTotalRs = sum(telenorNewBalance + telenorReversalBalance);
+
+  document.getElementById("telenor-total-rs").value = telenorTotalRs;
+}
+
+
+document.querySelectorAll("input[type='number']").forEach(input => {
+  input.addEventListener("input", sheetCalculation);
+});
